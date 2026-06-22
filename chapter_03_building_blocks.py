@@ -16,7 +16,7 @@ AWS Configuration:
     Ensure you have AWS credentials configured with access to Amazon Bedrock.
     Enable the following models in your Bedrock console:
     - amazon.titan-embed-text-v2:0 (for embeddings)
-    - anthropic.claude-3-sonnet-20240229-v1:0 (for LLM tasks)
+    - anthropic.claude-sonnet-4-20250514-v1:0 (for LLM tasks)
 """
 
 import json
@@ -37,7 +37,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 # Amazon Bedrock model IDs
 EMBEDDING_MODEL_ID = "amazon.titan-embed-text-v2:0"
-LLM_MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0"
+LLM_MODEL_ID = "anthropic.claude-sonnet-4-20250514-v1:0"
 
 # Initialize Bedrock client
 def get_bedrock_client(region_name: str = "us-east-1"):
@@ -1008,7 +1008,7 @@ def main():
     1. AWS credentials configured
     2. Bedrock model access enabled for:
        - amazon.titan-embed-text-v2:0
-       - anthropic.claude-3-sonnet-20240229-v1:0
+       - anthropic.claude-sonnet-4-20250514-v1:0
     """
     print("="*70)
     print("CHAPTER 3: BUILDING BLOCKS — CODE EXAMPLES")

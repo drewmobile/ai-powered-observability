@@ -383,7 +383,7 @@ Which action would be most effective? Respond with just the action_id."""
 
         try:
             response = self.bedrock_client.invoke_model(
-                modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+                modelId='anthropic.claude-sonnet-4-20250514-v1:0',
                 body=json.dumps({
                     'anthropic_version': 'bedrock-2023-05-31',
                     'max_tokens': 100,
@@ -828,7 +828,7 @@ Provide a brief 2-sentence summary suitable for an incident notification."""
 
         try:
             response = self.bedrock_client.invoke_model(
-                modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+                modelId='anthropic.claude-sonnet-4-20250514-v1:0',
                 body=json.dumps({
                     'anthropic_version': 'bedrock-2023-05-31',
                     'max_tokens': 150,

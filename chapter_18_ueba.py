@@ -12,6 +12,10 @@ This module demonstrates production-ready UEBA including:
 - Session analysis and impossible travel
 - AI-powered behavioral analysis with AWS Bedrock
 
+MITRE ATT&CK(R) technique identifiers (e.g., T1078, T1110) referenced in
+anomaly outputs are from the ATT&CK knowledge base (https://attack.mitre.org/).
+MITRE ATT&CK is a registered trademark of The MITRE Corporation.
+
 Author: AI-Powered Observability
 """
 
@@ -986,7 +990,7 @@ Be specific and actionable for a security analyst."""
 
         try:
             response = self.bedrock_client.invoke_model(
-                modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+                modelId='anthropic.claude-sonnet-4-20250514-v1:0',
                 body=json.dumps({
                     'anthropic_version': 'bedrock-2023-05-31',
                     'max_tokens': 500,

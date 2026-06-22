@@ -475,7 +475,7 @@ Provide:
 Be specific and focus on actionable improvements."""
 
         response = self.bedrock_client.invoke_model(
-            modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='anthropic.claude-sonnet-4-20250514-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
                 'max_tokens': 2000,
@@ -525,7 +525,7 @@ Provide a brief (3-4 paragraphs) executive summary covering:
 Use business language, not technical jargon. Focus on impacts and outcomes."""
 
         response = self.bedrock_client.invoke_model(
-            modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='anthropic.claude-sonnet-4-20250514-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
                 'max_tokens': 1200,

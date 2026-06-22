@@ -223,7 +223,7 @@ Provide a brief (2-3 sentences) explanation:
 Be specific and actionable."""
 
         response = self.bedrock_client.invoke_model(
-            modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='anthropic.claude-sonnet-4-20250514-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
                 'max_tokens': 300,
@@ -371,7 +371,7 @@ Provide a 2-3 sentence explanation:
 3. What the R² score tells us about model quality"""
 
         response = self.bedrock_client.invoke_model(
-            modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='anthropic.claude-sonnet-4-20250514-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
                 'max_tokens': 250,
@@ -426,10 +426,16 @@ class TraceAnalyzer:
     def analyze_critical_path(self, trace: DistributedTrace) -> Dict[str, Any]:
         """
         Identify the critical path (longest sequence) in a trace.
-        
+
+        This approach is informed by distributed tracing analysis as
+        described in Google's Dapper paper:
+            Sigelman, B. H., et al. (2010). "Dapper, a Large-Scale
+            Distributed Systems Tracing Infrastructure." Google Technical
+            Report.
+
         Args:
             trace: Trace to analyze
-            
+
         Returns:
             Critical path analysis
         """
@@ -602,7 +608,7 @@ Provide a 2-3 sentence analysis:
 3. Where to focus investigation"""
 
         response = self.bedrock_client.invoke_model(
-            modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='anthropic.claude-sonnet-4-20250514-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
                 'max_tokens': 250,
@@ -859,7 +865,7 @@ Provide 2-3 sentences explaining:
 3. Immediate actions needed"""
 
         response = self.bedrock_client.invoke_model(
-            modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='anthropic.claude-sonnet-4-20250514-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
                 'max_tokens': 250,

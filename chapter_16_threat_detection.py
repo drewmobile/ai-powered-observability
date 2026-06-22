@@ -37,7 +37,18 @@ class ThreatSeverity(Enum):
 
 
 class AttackStage(Enum):
-    """Kill chain attack stages"""
+    """
+    Attack stages mapped to MITRE ATT&CK Enterprise Tactics.
+
+    MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation.
+    Tactic names and technique identifiers (e.g., T1048, T1071) used
+    throughout this module are from the ATT&CK knowledge base:
+    https://attack.mitre.org/
+
+    Reference:
+        Strom, B. E., et al. (2018). "MITRE ATT&CK: Design and Philosophy."
+        MITRE Technical Report MP-19-01075.
+    """
     RECONNAISSANCE = "reconnaissance"
     INITIAL_ACCESS = "initial_access"
     EXECUTION = "execution"
@@ -217,7 +228,14 @@ class NetworkAnomalyDetector:
         return None
     
     def _detect_beaconing(self, events: List[NetworkEvent], source_ip: str) -> Optional[ThreatAlert]:
-        """Detect C2 beaconing patterns"""
+        """
+        Detect C2 beaconing patterns using interval regularity analysis.
+
+        The coefficient-of-variation approach to beacon detection is a
+        well-established technique in network security monitoring. See:
+        - Active Countermeasures, RITA (Real Intelligence Threat Analytics)
+        - SANS Institute papers on beacon detection methodology
+        """
         # Filter events from this source
         source_events = [e for e in events if e.source_ip == source_ip]
         
@@ -512,6 +530,12 @@ class EndpointThreatDetector:
     """
     Detects endpoint-based threats including malware execution,
     persistence mechanisms, and suspicious processes.
+
+    Detection rules in this class are informed by:
+    - MITRE ATT&CK(R) technique descriptions (https://attack.mitre.org/)
+    - Sigma detection rules (https://github.com/SigmaHQ/sigma), an open
+      source project for sharing detection logic across SIEM platforms
+    - Red Canary Threat Detection Reports
     """
     
     def __init__(self, bedrock_client):
@@ -767,6 +791,15 @@ class ThreatIntelligenceCorrelator:
 class KillChainDetector:
     """
     Detects multi-stage attacks by correlating alerts across kill chain stages.
+
+    The kill chain detection concept derives from:
+        Hutchins, E. M., Cloppert, M. J., & Amin, R. M. (2011).
+        "Intelligence-Driven Computer Network Defense Informed by Analysis
+        of Adversary Campaigns and Intrusion Kill Chains."
+        Lockheed Martin Corporation.
+
+    The specific attack stages used here are MITRE ATT&CK(R) Enterprise
+    Tactics rather than the original Lockheed Martin Cyber Kill Chain stages.
     """
     
     def __init__(self, bedrock_client):
@@ -939,7 +972,7 @@ Be concise and actionable."""
 
         try:
             response = self.bedrock_client.invoke_model(
-                modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+                modelId='anthropic.claude-sonnet-4-20250514-v1:0',
                 body=json.dumps({
                     'anthropic_version': 'bedrock-2023-05-31',
                     'max_tokens': 300,

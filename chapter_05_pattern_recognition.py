@@ -240,12 +240,16 @@ def generate_sample_logs(count: int = 500) -> List[Dict]:
 class DrainParser:
     """
     Implementation of the Drain log parsing algorithm.
-    
+
     Drain is a fixed-depth tree parser that efficiently extracts
     log templates by grouping similar log messages.
-    
-    Reference: He et al., "Drain: An Online Log Parsing Approach 
-    with Fixed Depth Tree" (2017)
+
+    Reference:
+        He, P., Zhu, J., Zheng, Z., & Lyu, M. R. (2017). "Drain: An Online
+        Log Parsing Approach with Fixed Depth Tree." IEEE ICWS, 33-40.
+
+    The canonical open source implementation is maintained by the LogPAI
+    project: https://github.com/logpai/logparser
     """
     
     def __init__(

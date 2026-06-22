@@ -120,11 +120,18 @@ class DemandForecaster:
                        forecast_hours: int = 168) -> Optional[Dict[str, Any]]:
         """
         Forecast future demand for a service.
-        
+
+        Uses Fourier feature engineering (sin/cos terms at daily and weekly
+        periods) with linear regression, an approach described in:
+            Hyndman, R. J., & Athanasopoulos, G. (2021). "Forecasting:
+            Principles and Practice." 3rd ed., OTexts. Chapter 7.
+        This technique is also the basis for seasonality modeling in
+        Meta's Prophet library.
+
         Args:
             service: Service to forecast
             forecast_hours: Hours to forecast ahead (default 1 week)
-            
+
         Returns:
             Forecast with confidence intervals
         """
@@ -432,7 +439,7 @@ Provide a 2-3 sentence analysis:
 3. Immediate action needed if any"""
 
         response = self.bedrock_client.invoke_model(
-            modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='anthropic.claude-sonnet-4-20250514-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
                 'max_tokens': 250,
@@ -460,7 +467,7 @@ Provide 2-3 sentences:
 3. What should be prioritized"""
 
         response = self.bedrock_client.invoke_model(
-            modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='anthropic.claude-sonnet-4-20250514-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
                 'max_tokens': 200,
@@ -592,7 +599,7 @@ Provide 2-3 sentences explaining:
 3. Expected benefit"""
 
         response = self.bedrock_client.invoke_model(
-            modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='anthropic.claude-sonnet-4-20250514-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
                 'max_tokens': 200,

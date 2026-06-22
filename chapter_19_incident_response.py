@@ -11,6 +11,15 @@ This module demonstrates production-ready automated security incident response i
 - Incident timeline and documentation
 - AI-powered incident analysis with AWS Bedrock
 
+The incident response lifecycle (detect, triage, contain, eradicate, recover)
+follows the framework defined in:
+    NIST SP 800-61 Rev. 2, "Computer Security Incident Handling Guide" (2012).
+    National Institute of Standards and Technology.
+
+MITRE ATT&CK(R) technique identifiers referenced in response playbooks are
+from https://attack.mitre.org/. MITRE ATT&CK is a registered trademark of
+The MITRE Corporation.
+
 Author: AI-Powered Observability
 """
 
@@ -480,6 +489,12 @@ class ActionExecutor:
 class PlaybookEngine:
     """
     Executes security response playbooks.
+
+    Playbook structure and the incident response lifecycle follow the
+    framework defined in NIST SP 800-61 Rev. 2. The playbook execution
+    model (steps, conditions, automation levels, approval gates) is
+    informed by SOAR platform architectures such as Splunk SOAR,
+    Palo Alto XSOAR, and IBM Resilient.
     """
     
     def __init__(self, action_executor: ActionExecutor, bedrock_client):
@@ -894,7 +909,7 @@ Be concise and actionable."""
 
         try:
             response = self.bedrock_client.invoke_model(
-                modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+                modelId='anthropic.claude-sonnet-4-20250514-v1:0',
                 body=json.dumps({
                     'anthropic_version': 'bedrock-2023-05-31',
                     'max_tokens': 400,
@@ -974,7 +989,7 @@ Format as a professional security incident report."""
 
         try:
             response = self.bedrock_client.invoke_model(
-                modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+                modelId='anthropic.claude-sonnet-4-20250514-v1:0',
                 body=json.dumps({
                     'anthropic_version': 'bedrock-2023-05-31',
                     'max_tokens': 800,

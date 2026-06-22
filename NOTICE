@@ -1,0 +1,28 @@
+AI-Powered Observability: Code Examples
+Copyright 2026 Drew Moisant
+
+This product includes code that implements or is informed by the following:
+
+- Drain log parsing algorithm (He et al., 2017, IEEE ICWS)
+  Canonical implementation: https://github.com/logpai/logparser (MIT License)
+
+- MITRE ATT&CK(R) Framework (https://attack.mitre.org/)
+  MITRE ATT&CK is a registered trademark of The MITRE Corporation.
+  Tactic names and technique identifiers used under the ATT&CK terms of use.
+
+- Lockheed Martin Cyber Kill Chain concept
+  Hutchins, Cloppert, Amin (2011), Lockheed Martin Corporation.
+
+- NIST SP 800-61 Rev. 2, "Computer Security Incident Handling Guide"
+  National Institute of Standards and Technology (2012).
+
+- Sigma detection rules (https://github.com/SigmaHQ/sigma)
+  Licensed under the Detection Rule License (DRL).
+
+- RITA beaconing detection methodology
+  Active Countermeasures (https://github.com/activecm/rita), GPL-3.0 License.
+
+This product uses the following open source libraries:
+  scikit-learn (BSD-3), NumPy (BSD-3), pandas (BSD-3), SciPy (BSD-3),
+  statsmodels (BSD-3), NetworkX (BSD-3), boto3 (Apache-2.0),
+  TensorFlow (Apache-2.0).

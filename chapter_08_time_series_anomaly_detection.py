@@ -17,7 +17,7 @@ Prerequisites:
 AWS Configuration:
     Ensure you have AWS credentials configured with access to Amazon Bedrock.
     Enable the following models in your Bedrock console:
-    - anthropic.claude-3-sonnet-20240229-v1:0 (for analysis/explanation)
+    - anthropic.claude-sonnet-4-20250514-v1:0 (for analysis/explanation)
 
 Note: This code demonstrates multiple approaches. In production, choose the methods
       that best fit your data characteristics and requirements.
@@ -59,7 +59,7 @@ except ImportError:
 # CONFIGURATION
 # =============================================================================
 
-LLM_MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0"
+LLM_MODEL_ID = "anthropic.claude-sonnet-4-20250514-v1:0"
 
 def get_bedrock_client(region_name: str = "us-east-1"):
     """Create a Bedrock runtime client."""
@@ -612,6 +612,14 @@ class LSTMAutoencoderDetector:
     LSTM-based autoencoder for anomaly detection.
     Learns to reconstruct normal patterns; poor reconstruction indicates anomaly.
     Requires TensorFlow.
+
+    The encoder-RepeatVector-decoder architecture follows the sequence-to-
+    sequence autoencoder pattern described in the Keras documentation and
+    popularized by time series anomaly detection tutorials. See:
+        - Keras Time Series Anomaly Detection example
+          (https://keras.io/examples/timeseries/)
+        - Malhotra, P., et al. (2016). "LSTM-based Encoder-Decoder for
+          Multi-sensor Anomaly Detection." ICML Workshop.
     """
     
     def __init__(

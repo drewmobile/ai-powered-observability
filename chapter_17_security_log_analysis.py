@@ -110,7 +110,20 @@ class HuntingResult:
 
 class LogTemplateExtractor:
     """
-    Extracts log templates using pattern mining (simplified Drain algorithm).
+    Extracts log templates using regex-based variable substitution.
+
+    This approach replaces known variable patterns (IPs, timestamps, hashes,
+    etc.) with typed placeholders to produce structural "fingerprints" of log
+    messages. It is a simpler alternative to tree-based log parsers like Drain:
+
+        He, P., Zhu, J., Zheng, Z., & Lyu, M. R. (2017). "Drain: An Online
+        Log Parsing Approach with Fixed Depth Tree." IEEE ICWS, 33-40.
+
+    For a full Drain implementation, see the LogPAI/logparser project:
+    https://github.com/logpai/logparser
+
+    MITRE ATT&CK(R) technique identifiers referenced in threat scoring
+    are from https://attack.mitre.org/
     """
     
     def __init__(self):
@@ -351,7 +364,7 @@ Respond in JSON format with these fields:
 
         try:
             response = self.bedrock_client.invoke_model(
-                modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+                modelId='anthropic.claude-sonnet-4-20250514-v1:0',
                 body=json.dumps({
                     'anthropic_version': 'bedrock-2023-05-31',
                     'max_tokens': 500,
@@ -721,7 +734,7 @@ Provide a brief (3-4 sentences) security analysis:
 
         try:
             response = self.bedrock_client.invoke_model(
-                modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+                modelId='anthropic.claude-sonnet-4-20250514-v1:0',
                 body=json.dumps({
                     'anthropic_version': 'bedrock-2023-05-31',
                     'max_tokens': 300,
@@ -861,7 +874,7 @@ Be specific and actionable."""
 
         try:
             response = self.bedrock_client.invoke_model(
-                modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+                modelId='anthropic.claude-sonnet-4-20250514-v1:0',
                 body=json.dumps({
                     'anthropic_version': 'bedrock-2023-05-31',
                     'max_tokens': 800,

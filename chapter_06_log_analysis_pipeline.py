@@ -18,7 +18,7 @@ AWS Configuration:
     Ensure you have AWS credentials configured with access to Amazon Bedrock.
     Enable the following models in your Bedrock console:
     - amazon.titan-embed-text-v2:0 (for embeddings)
-    - anthropic.claude-3-sonnet-20240229-v1:0 (for LLM tasks)
+    - anthropic.claude-sonnet-4-20250514-v1:0 (for LLM tasks)
 
 This chapter integrates concepts from Chapters 3-5 into a complete system.
 """
@@ -45,7 +45,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 # =============================================================================
 
 EMBEDDING_MODEL_ID = "amazon.titan-embed-text-v2:0"
-LLM_MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0"
+LLM_MODEL_ID = "anthropic.claude-sonnet-4-20250514-v1:0"
 
 
 def get_bedrock_client(region_name: str = "us-east-1"):

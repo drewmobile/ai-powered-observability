@@ -439,7 +439,7 @@ class SemanticCorrelator:
         
         # Generate embedding using AWS Bedrock Titan
         response = self.bedrock_client.invoke_model(
-            modelId='amazon.titan-embed-text-v1',
+            modelId='amazon.titan-embed-text-v2:0',
             body=json.dumps({
                 'inputText': alert_text
             })
@@ -746,7 +746,7 @@ Provide:
 Be specific and actionable."""
 
         response = self.bedrock_client.invoke_model(
-            modelId='anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='anthropic.claude-sonnet-4-20250514-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
                 'max_tokens': 500,
